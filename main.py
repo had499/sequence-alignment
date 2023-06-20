@@ -16,6 +16,6 @@ alignment.printAlignment(type="local")
 ## Print similarity matrix
 alignment.printSimilarityMatrix(type="local")
 
-## Global Reconstruction
+## Local Reconstruction
 alignment.printAlignment(type="local")
 
