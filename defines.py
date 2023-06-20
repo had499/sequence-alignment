@@ -9,10 +9,22 @@ class SequenceAlignment:
         self.localPointers = None
         self.matrixGlobal = self.initMatrixGlobal(sequenceOne,sequenceTwo)
         self.matrixLocal = self.initMatrixLocal(sequenceOne,sequenceTwo)
+        self.reconstructedSequenceOneGlobal, self.reconstructedSequenceTwoGlobal = self.reconstructGlobal() 
+        self.reconstructedSequenceOneLocal, self.reconstructedSequenceTwoLocal = self.reconstructLocal() 
 
 
-    def __str__(self):
-        return "hello"
+    def printSimilarityMatrix(self,type="global"):
+        if type == "global":
+            print('\n'.join(' '.join(map(str, row)) for row in self.matrixGlobal))
+        else:
+            print('\n'.join(' '.join(map(str, row)) for row in self.matrixLocal))
+        return
+        
+    def printAlignment(self,type="global"):
+        if type == "global":
+            print(self.reconstructedSequenceOneGlobal + "\n" + self.reconstructedSequenceTwoGlobal)
+        else:
+            print(self.reconstructedSequenceOneLocal+ "\n" + self.reconstructedSequenceTwoLocal)
 
     def initMatrixGlobal(self,sequenceOne, sequenceTwo):
         ### height corresponds to sequenceOne, width is sequenceTwo
@@ -24,10 +36,10 @@ class SequenceAlignment:
 
         for i in range(lenSequenceOne):
             matrix[i+2][0] = sequenceOne[i]
-            matrix[i+2][1] = -(i+1)*self.indelPenalty
+            matrix[i+2][1] = (i+1)*self.indelPenalty
         for i in range(lenSequenceTwo):
             matrix[0][i+2] = sequenceTwo[i]
-            matrix[1][i+2] = -(i+1)*self.indelPenalty
+            matrix[1][i+2] = (i+1)*self.indelPenalty
         matrix[1][1] = 0
        
         pointers = dict()

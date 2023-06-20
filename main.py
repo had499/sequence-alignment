@@ -1,6 +1,21 @@
 from defines import SequenceAlignment
 
-test = SequenceAlignment("what the hell is going on", "i dont what the hell is going on")
+## Define the alignment object using input sequences
+alignment = SequenceAlignment("GCATGCG", "GATGA")
 
-print(test.reconstructGlobal())
-print(test)
+###GLOBAL
+
+## Print similarity matrix
+alignment.printSimilarityMatrix(type="global")
+
+## Global Reconstruction
+alignment.printAlignment(type="local")
+
+
+###LOCAL
+## Print similarity matrix
+alignment.printSimilarityMatrix(type="local")
+
+## Global Reconstruction
+alignment.printAlignment(type="local")
+
