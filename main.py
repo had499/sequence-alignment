@@ -9,7 +9,7 @@ alignment = SequenceAlignment("GCATGCG", "GATGA")
 alignment.printSimilarityMatrix(type="global")
 
 ## Global Reconstruction
-alignment.printAlignment(type="local")
+alignment.printAlignment(type="global")
 
 
 ###LOCAL
