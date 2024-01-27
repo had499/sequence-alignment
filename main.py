@@ -1,21 +1,14 @@
-from defines import SequenceAlignment
+from sequence import GlobalAlignment, LocalAlignment
 
 ## Define the alignment object using input sequences
-alignment = SequenceAlignment("GCATGCG", "GATGA")
+local_alignment = LocalAlignment("ATCGGCTAGCTAGGCCAAATCGAC","AGGTCGACAGGTCGACAGGTCGAC")
 
-###GLOBAL
+global_alignment = GlobalAlignment("ATCGGCTAGCTAGGCCAAATCGAC","AGGTCGACAGGTCGACAGGTCGAC")
 
-## Print similarity matrix
-alignment.printSimilarityMatrix(type="global")
-
-## Global Reconstruction
-alignment.printAlignment(type="global")
+local_alignment()
+global_alignment()
 
 
-###LOCAL
-## Print similarity matrix
-alignment.printSimilarityMatrix(type="local")
-
-## Local Reconstruction
-alignment.printAlignment(type="local")
+print(local_alignment)
+print(global_alignment)
 
